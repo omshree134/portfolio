@@ -1,54 +1,5 @@
-// @flow strict
-"use client";
 import { experiences } from "@/utils/data/experience";
-
-function Experience() {
-  return (
-    <div id="experience" className="relative z-50 my-8 lg:my-16 px-6 md:px-12 mx-auto max-w-[92rem]">
-      <div className="flex items-center justify-start mb-8">
-        <h2 className="text-3xl font-bold text-white tracking-tight">
-          Experience & Achievements
-        </h2>
-      </div>
-
-      <div className="relative border-l border-white/10 ml-3 lg:ml-6 space-y-8 lg:space-y-12 pb-8">
-        {experiences.map((experience, index) => (
-          <div
-            key={experience.id}
-            className="relative pl-8 lg:pl-12 animate-slide-in-left"
-            style={{ animationDelay: `${index * 0.1}s` }}
-          >
-            {/* Timeline dot */}
-            <div className="absolute -left-[5px] top-1.5 h-2.5 w-2.5 rounded-full bg-accent ring-4 ring-background"></div>
-            
-            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-2 lg:gap-8 mb-2">
-              <h3 className="text-xl lg:text-2xl font-bold text-white">
-                {experience.title}
-              </h3>
-              <span className="text-accent font-medium bg-accent/10 px-3 py-1 rounded-full text-sm w-fit">
-                {experience.duration}
-              </span>
-            </div>
-            
-            <p className="text-muted text-base font-medium">
-              {experience.company}
-            </p>
-
-            {experience.points && (
-              <ul className="mt-3 space-y-2">
-                {experience.points.map((point, i) => (
-                  <li key={i} className="flex items-start gap-2.5 text-sm text-muted leading-relaxed">
-                    <span className="mt-[7px] h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent/70"></span>
-                    <span>{point}</span>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-};
-
-export default Experience;
+import Reveal from "../../helper/reveal";
+export default function Experience() {
+  return <section id="experience" className="border-y border-white/10 bg-[#0d0f0c]/80"><div className="mx-auto grid max-w-[90rem] px-5 py-28 sm:px-8 lg:grid-cols-[.42fr_1fr] lg:px-12 lg:py-40"><Reveal className="lg:sticky lg:top-32 lg:h-fit"><span className="section-kicker">The journey</span><h2 className="mt-5 text-5xl font-semibold tracking-[-.06em] sm:text-6xl">Learning by<br />building.</h2><p className="mt-6 max-w-xs text-sm leading-6 text-muted">A timeline of work, research, and the milestones that have shaped how I solve problems.</p></Reveal><div className="mt-16 lg:mt-0">{experiences.map((item, i) => <Reveal key={item.id} delay={i * .05} className="group grid gap-5 border-t border-white/10 py-9 first:border-accent md:grid-cols-[3.5rem_1fr_auto]"><span className="text-sm text-accent">0{i + 1}</span><div><h3 className="text-2xl font-semibold tracking-[-.03em] transition-colors group-hover:text-accent">{item.title}</h3><p className="mt-2 text-sm font-medium text-muted">{item.company}</p><ul className="mt-5 max-w-2xl space-y-2">{item.points?.map(point => <li key={point} className="flex gap-3 text-sm leading-6 text-muted"><span className="mt-[.65rem] h-1 w-1 shrink-0 rounded-full bg-accent" />{point}</li>)}</ul></div><span className="text-xs font-semibold uppercase tracking-wider text-muted md:text-right">{item.duration.replaceAll("(", "").replaceAll(")", "")}</span></Reveal>)}</div></div></section>;
+}

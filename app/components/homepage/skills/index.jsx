@@ -1,32 +1,6 @@
-// @flow strict
-"use client";
 import { skillsData } from "@/utils/data/skills";
-
-function Skills() {
-  return (
-    <div id="skills" className="relative z-50 my-8 lg:my-16 px-6 md:px-12 mx-auto max-w-[92rem]">
-      <div className="flex flex-col items-center justify-center mb-8">
-        <h2 className="text-3xl font-bold text-white tracking-tight mb-3">
-          Core Technologies
-        </h2>
-        <p className="text-sm text-muted text-center max-w-xl">
-          Languages, frameworks, and tools I use to build scalable ML systems and backend infrastructure.
-        </p>
-      </div>
-
-      <div className="flex flex-wrap justify-center gap-2 lg:gap-2.5 max-w-3xl mx-auto">
-        {skillsData.map((skill, id) => (
-          <div
-            key={id}
-            className="px-4 py-2 rounded-full bg-[#0f172a] border border-white/5 text-sm text-muted font-medium hover:text-white hover:border-accent/40 transition-all cursor-default animate-fade-up"
-            style={{ animationDelay: `${id * 0.03}s` }}
-          >
-            {skill}
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-};
-
-export default Skills;
+import Reveal from "../../helper/reveal";
+const groups = [{ name: "Intelligence", values: ["TensorFlow", "PyTorch", "OpenCV", "NumPy", "Pandas"] }, { name: "Engineering", values: ["Python", "FastAPI", "Java", "C++"] }, { name: "Infrastructure", values: ["Docker", "MongoDB", "Git"] }];
+export default function Skills() {
+  return <section id="skills" className="mx-auto max-w-[90rem] px-5 py-28 sm:px-8 lg:px-12 lg:py-40"><Reveal className="grid gap-8 md:grid-cols-2 md:items-end"><div><span className="section-kicker">Toolkit</span><h2 className="mt-5 text-5xl font-semibold tracking-[-.06em] sm:text-7xl">Tools follow<br />the problem.</h2></div><p className="max-w-md text-base leading-7 text-muted md:justify-self-end">I choose the stack that makes the product simpler, faster, and easier to maintain—not the one with the most buzz.</p></Reveal><div className="mt-20 grid gap-4 md:grid-cols-3">{groups.map((group, i) => <Reveal key={group.name} delay={i * .08} className="rounded-[1.8rem] border border-white/10 bg-white/[.025] p-6 md:p-8"><span className="text-xs uppercase tracking-[.18em] text-accent">0{i + 1} / {group.name}</span><div className="mt-10 flex flex-wrap gap-2">{group.values.map(value => <span key={value} className="rounded-full border border-white/10 px-4 py-2 text-sm text-muted transition hover:border-accent hover:text-accent">{value}</span>)}</div></Reveal>)}</div><p className="mt-8 text-center text-xs uppercase tracking-[.2em] text-muted">{skillsData.length} core technologies · always learning the next one</p></section>;
+}

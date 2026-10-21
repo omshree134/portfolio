@@ -1,53 +1,5 @@
-// @flow strict
-"use client";
 import { educations } from "@/utils/data/educations";
-import { BsPersonWorkspace } from "react-icons/bs";
-
-function Education() {
-  return (
-    <div id="education" className="relative z-50 my-8 lg:my-16 px-6 md:px-12 mx-auto max-w-[92rem]">
-      <div className="flex items-center justify-start mb-8">
-        <h2 className="text-3xl font-bold text-white tracking-tight">
-          Education
-        </h2>
-      </div>
-
-      <div className="grid grid-cols-1 gap-6 lg:gap-8 max-w-3xl">
-        {educations.map((education, index) => (
-          <div
-            key={education.id}
-            className="bg-[#1e293b] border border-white/8 rounded-xl p-5 lg:p-6 flex flex-col md:flex-row gap-5 transition-all duration-300 hover:border-white/15 hover:-translate-y-1 animate-fade-up"
-            style={{ animationDelay: `${index * 0.1}s` }}
-          >
-            <div className="flex-shrink-0 mt-1 hidden md:block text-accent">
-              <BsPersonWorkspace size={36} />
-            </div>
-            
-            <div className="flex-grow">
-              <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-3">
-                <h3 className="text-xl lg:text-2xl font-bold text-white">
-                  {education.title}
-                </h3>
-                <span className="text-sm font-medium text-accent bg-accent/10 px-3 py-1 rounded-full w-fit">
-                  {education.duration}
-                </span>
-              </div>
-              
-              <p className="text-base lg:text-lg text-muted font-medium mb-2">
-                {education.institution}
-              </p>
-              
-              {education.gpa && (
-                <p className="text-sm text-white font-semibold">
-                  {education.gpa}
-                </p>
-              )}
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-};
-
-export default Education;
+import Reveal from "../../helper/reveal";
+export default function Education() {
+  return <section id="education" className="mx-auto max-w-[90rem] px-5 pb-28 sm:px-8 lg:px-12 lg:pb-40">{educations.map(item => <Reveal key={item.id} className="relative overflow-hidden rounded-[1.5rem] border border-white/10 bg-[#0b1018]/85 p-7 sm:p-10 lg:p-14"><div className="absolute -right-6 -top-16 text-[14rem] font-medium leading-none text-white/[.025]">8.95</div><span className="text-[10px] font-medium uppercase tracking-[.2em] text-accent">Education / Foundation</span><div className="relative mt-14 grid gap-8 md:grid-cols-[1fr_auto] md:items-end"><div><h2 className="text-4xl font-medium tracking-[-.05em] sm:text-6xl">{item.title}</h2><p className="mt-4 max-w-xl text-sm text-muted">{item.institution}</p></div><div className="border-l border-white/10 pl-5 md:text-right"><p className="text-4xl font-medium text-accent">{item.gpa.replace("GPA: ", "")}</p><p className="mt-1 text-[10px] font-medium uppercase tracking-[.16em] text-muted">GPA · {item.duration}</p></div></div></Reveal>)}</section>;
+}

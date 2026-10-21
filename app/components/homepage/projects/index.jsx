@@ -1,24 +1,6 @@
-// @flow strict
-import { projectsData } from '@/utils/data/projects-data';
-import ProjectCard from './project-card';
-
-const Projects = () => {
-
-  return (
-    <div id='projects' className="relative z-50 my-8 lg:my-16 px-6 md:px-12 mx-auto max-w-[92rem]">
-      <div className="flex items-center justify-start mb-8">
-        <h2 className="text-3xl font-bold text-white tracking-tight">
-          Featured Projects
-        </h2>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-        {projectsData.slice(0, 6).map((project, index) => (
-          <ProjectCard key={index} project={project} />
-        ))}
-      </div>
-    </div>
-  );
-};
-
-export default Projects;
+import { projectsData } from "@/utils/data/projects-data";
+import ProjectCard from "./project-card";
+import Reveal from "../../helper/reveal";
+export default function Projects() {
+  return <section id="projects" className="mx-auto max-w-[90rem] px-5 py-28 sm:px-8 lg:px-12 lg:py-40"><Reveal className="flex flex-col gap-6 border-b border-white/10 pb-10 md:flex-row md:items-end md:justify-between"><div><span className="section-kicker">Selected work</span><h2 className="mt-5 text-5xl font-semibold tracking-[-.06em] sm:text-7xl">Built for the real world.</h2></div><p className="max-w-sm text-sm leading-6 text-muted">A selection of systems built around accessibility, personal safety, public health and operational resilience.</p></Reveal><div className="mt-12 grid gap-5 lg:grid-cols-2">{projectsData.map((project, index) => <ProjectCard key={project.id} project={project} index={index} />)}</div></section>;
+}

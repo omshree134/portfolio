@@ -1,63 +1,12 @@
-// @flow strict
 "use client";
-import * as React from 'react';
-import Link from 'next/link';
-import { BsGithub } from 'react-icons/bs';
-import { BiLinkExternal } from 'react-icons/bi';
-
-function ProjectCard({ project }) {
-  return (
-    <div 
-      className="bg-[#1e293b] border border-white/5 relative rounded-xl w-full p-5 lg:p-6 flex flex-col justify-between h-full transition-all duration-300 hover:border-white/15 hover:-translate-y-1"
-      style={{ 
-        transition: 'transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease',
-      }}
-      onMouseEnter={(e) => e.currentTarget.style.boxShadow = '0 8px 32px rgba(59,130,246,0.1)'}
-      onMouseLeave={(e) => e.currentTarget.style.boxShadow = 'none'}
-    >
-      <div>
-        <div className="flex justify-between items-start mb-4">
-          <div className="flex flex-col gap-2 pr-4">
-            <h3 className="text-lg font-bold text-white leading-snug">
-              {project.name}
-            </h3>
-            {project.badge && (
-              <span className="w-fit px-2.5 py-0.5 rounded-full bg-accent/15 border border-accent/30 text-accent text-[11px] font-semibold uppercase tracking-wide">
-                {project.badge}
-              </span>
-            )}
-          </div>
-          <div className="flex gap-2.5 text-muted flex-shrink-0">
-            {project.code && (
-              <Link href={project.code} target="_blank" className="hover:text-accent transition-colors">
-                <BsGithub size={18} />
-              </Link>
-            )}
-            {project.demo && (
-              <Link href={project.demo} target="_blank" className="hover:text-accent transition-colors">
-                <BiLinkExternal size={20} />
-              </Link>
-            )}
-          </div>
-        </div>
-        
-        <p className="text-sm text-muted leading-relaxed mb-5 line-clamp-3">
-          {project.description}
-        </p>
-      </div>
-
-      <div className="flex flex-wrap gap-1.5 mt-auto">
-        {project.tools.map((tag, i) => (
-          <span 
-            key={i} 
-            className="px-2.5 py-1 text-xs font-medium bg-[#0f172a] text-accent/80 border border-accent/15 rounded-full"
-          >
-            {tag}
-          </span>
-        ))}
-      </div>
-    </div>
-  );
-};
-
-export default ProjectCard;
+import Link from "next/link";
+import Reveal from "../../helper/reveal";
+const tones = ["#8fb8ff", "#9bb5d8", "#7fa7d8", "#a6bedc", "#779bc8", "#91a9c7"];
+export default function ProjectCard({ project, index }) {
+  const color = tones[index % tones.length];
+  const trackMouse = (e) => { const r = e.currentTarget.getBoundingClientRect(); e.currentTarget.style.setProperty("--x", `${e.clientX - r.left}px`); e.currentTarget.style.setProperty("--y", `${e.clientY - r.top}px`); };
+  return <Reveal delay={(index % 2) * .06} className={index === 0 ? "lg:col-span-2" : ""}><article onMouseMove={trackMouse} className={`project-card group relative flex h-full min-h-[29rem] flex-col overflow-hidden rounded-[1.4rem] border border-white/[.09] bg-[#0b0f15]/80 p-6 transition duration-500 hover:border-white/20 sm:p-8 ${index === 0 ? "lg:min-h-[32rem] lg:grid lg:grid-cols-[.9fr_1.1fr] lg:gap-10" : ""}`}>
+    <div className="relative z-10 flex h-full flex-col"><div className="flex items-center justify-between text-[10px] uppercase tracking-[.17em] text-muted"><span>0{index + 1} / Case study</span><span>{project.role}</span></div><div className="mt-auto pt-14"><div className="mb-4 flex flex-wrap items-center gap-2">{project.badge && <span className="rounded-full border border-accent/25 bg-accent/8 px-3 py-1 text-[10px] font-semibold uppercase text-accent">{project.badge}</span>}</div><h3 className="text-3xl font-medium leading-none tracking-[-.04em] sm:text-4xl">{project.name}</h3><p className="mt-5 max-w-xl text-sm leading-6 text-muted">{project.description}</p><div className="mt-6 flex flex-wrap gap-x-4 gap-y-2">{project.tools.slice(0, 4).map(tool => <span key={tool} className="text-xs font-medium text-white/55">{tool}</span>)}</div><Link href={project.code} target="_blank" className="mt-8 inline-flex w-fit items-center gap-3 text-sm font-medium">View repository <span className="grid h-9 w-9 place-items-center rounded-full border border-white/15 transition group-hover:border-accent group-hover:text-accent">↗</span></Link></div></div>
+    <div className={`relative mt-10 min-h-56 overflow-hidden rounded-[1rem] border border-white/[.08] ${index === 0 ? "lg:mt-0" : ""}`} style={{ background: `radial-gradient(circle at 50% 50%, ${color}18, transparent 58%), #080c12` }}><div className="absolute inset-5 rounded-full border border-white/[.07] transition duration-1000 group-hover:scale-105" /><div className="absolute inset-[18%] rounded-full border border-white/[.09] transition duration-1000 group-hover:rotate-[18deg]" /><div className="absolute left-1/2 top-1/2 grid h-20 w-20 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-2xl border border-white/10 text-2xl font-medium shadow-2xl transition duration-700 group-hover:-translate-y-[54%]" style={{ backgroundColor: `${color}18`, color }}>{project.name.split(" ")[0].slice(0, 2).toUpperCase()}</div><span className="absolute bottom-4 right-5 text-[9px] uppercase tracking-[.18em] text-white/25">Applied intelligence / product engineering</span></div>
+  </article></Reveal>;
+}

@@ -1,62 +1,9 @@
-// @flow strict
+"use client";
 import Link from "next/link";
+import { useState } from "react";
 import { personalData } from "@/utils/data/personal-data";
-
-function Navbar() {
-  return (
-    <nav className="sticky top-0 z-[100] border-b border-white/5 shadow-sm" style={{ background: 'rgba(2,6,23,0.75)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)' }}>
-      <div className="flex items-center justify-between py-3 px-6 md:px-12 mx-auto max-w-[92rem]">
-        <div className="flex flex-shrink-0 items-center">
-          <Link
-            href="/"
-            className="text-white text-2xl font-bold tracking-tight">
-            Om Shree
-          </Link>
-        </div>
-
-        <ul className="mt-4 flex h-screen max-h-0 w-full flex-col items-start text-sm opacity-0 md:mt-0 md:h-auto md:max-h-screen md:w-auto md:flex-row md:space-x-4 md:border-0 md:opacity-100" id="navbar-default">
-          <li>
-            <Link className="group relative block px-2 py-2 text-sm text-muted transition-colors duration-300 hover:text-white" href="/#about">
-              ABOUT
-              <span className="absolute inset-x-0 -bottom-1 h-0.5 scale-x-0 bg-accent transition-transform duration-300 group-hover:scale-x-100"></span>
-            </Link>
-          </li>
-          <li>
-            <Link className="group relative block px-2 py-2 text-sm text-muted transition-colors duration-300 hover:text-white" href="/#experience">
-              EXPERIENCE
-              <span className="absolute inset-x-0 -bottom-1 h-0.5 scale-x-0 bg-accent transition-transform duration-300 group-hover:scale-x-100"></span>
-            </Link>
-          </li>
-          <li>
-            <Link className="group relative block px-2 py-2 text-sm text-muted transition-colors duration-300 hover:text-white" href="/#skills">
-              SKILLS
-              <span className="absolute inset-x-0 -bottom-1 h-0.5 scale-x-0 bg-accent transition-transform duration-300 group-hover:scale-x-100"></span>
-            </Link>
-          </li>
-          <li>
-            <Link className="group relative block px-2 py-2 text-sm text-muted transition-colors duration-300 hover:text-white" href="/#education">
-              EDUCATION
-              <span className="absolute inset-x-0 -bottom-1 h-0.5 scale-x-0 bg-accent transition-transform duration-300 group-hover:scale-x-100"></span>
-            </Link>
-          </li>
-          <li>
-            <Link className="group relative block px-2 py-2 text-sm text-muted transition-colors duration-300 hover:text-white" href="/#projects">
-              PROJECTS
-              <span className="absolute inset-x-0 -bottom-1 h-0.5 scale-x-0 bg-accent transition-transform duration-300 group-hover:scale-x-100"></span>
-            </Link>
-          </li>
-          {personalData.resume && (
-            <li>
-              <Link className="group relative block px-2 py-2 text-sm text-accent transition-colors duration-300 hover:text-white" href={personalData.resume} target="_blank">
-                RESUME
-                <span className="absolute inset-x-0 -bottom-1 h-0.5 scale-x-0 bg-accent transition-transform duration-300 group-hover:scale-x-100"></span>
-              </Link>
-            </li>
-          )}
-        </ul>
-      </div>
-    </nav>
-  );
-};
-
-export default Navbar;
+const links = [["About", "#about"], ["Work", "#projects"], ["Journey", "#experience"], ["Contact", "#contact"]];
+export default function Navbar() {
+  const [open, setOpen] = useState(false);
+  return <header className="fixed inset-x-0 top-0 z-[100] px-4 pt-4 md:px-8"><nav className="glass-panel mx-auto flex max-w-[90rem] items-center justify-between rounded-full px-4 py-3 md:px-6"><Link href="/" className="flex items-center gap-3 font-bold tracking-[-.04em]"><span className="grid h-8 w-8 place-items-center rounded-full bg-accent text-xs text-background">OS</span><span className="hidden sm:block">Om Shree</span></Link><div className="hidden items-center gap-7 md:flex">{links.map(([label, href]) => <Link key={href} href={href} className="text-sm text-muted transition-colors hover:text-white">{label}</Link>)}</div><div className="flex items-center gap-3"><span className="hidden items-center gap-2 text-xs text-muted lg:flex"><span className="status-pulse relative h-2 w-2 rounded-full bg-accent" /> Available for internships</span><Link href={personalData.resume} target="_blank" className="rounded-full bg-white px-4 py-2 text-xs font-bold text-black transition hover:bg-accent">Resume ↗</Link><button onClick={() => setOpen(!open)} aria-label="Toggle navigation" aria-expanded={open} className="grid h-9 w-9 place-items-center rounded-full border border-white/15 md:hidden">{open ? "×" : "≡"}</button></div></nav>{open && <div className="glass-panel mx-2 mt-2 rounded-3xl p-5 md:hidden">{links.map(([label, href]) => <Link onClick={() => setOpen(false)} key={href} href={href} className="block border-b border-white/10 py-4 text-2xl">{label}</Link>)}</div>}</header>;
+}
