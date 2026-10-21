@@ -4,6 +4,6 @@ export const educations = [
     title: "B.E. CSE (AI&ML)",
     duration: "August 2023 - August 2027",
     institution: "RNS Institute of Technology, Bengaluru, Karnataka",
-    gpa: "GPA: 9.2"
+    gpa: "GPA: 8.95"
   }
 ]
