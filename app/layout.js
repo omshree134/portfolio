@@ -1,5 +1,5 @@
 import { GoogleTagManager } from "@next/third-parties/google";
-import { Inter } from "next/font/google";
+import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Footer from "./components/footer";
@@ -7,7 +7,9 @@ import ScrollToTop from "./components/helper/scroll-to-top";
 import Navbar from "./components/navbar";
 import "./css/card.scss";
 import "./css/globals.scss";
-const inter = Inter({ subsets: ["latin"] });
+
+const display = Space_Grotesk({ subsets: ["latin"], variable: "--font-display" });
+const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono" });
 
 const siteUrl = "https://omshreechoudhary.tech";
 
@@ -37,14 +39,16 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className} suppressHydrationWarning>
-        <ToastContainer />
-        <main className="min-h-screen relative mx-auto px-6 sm:px-12 lg:max-w-[70rem] xl:max-w-[76rem] 2xl:max-w-[92rem] text-white">
+      <body className={`${display.variable} ${mono.variable}`} suppressHydrationWarning>
+        <div className="bg-signal min-h-screen font-[family-name:var(--font-display)]">
+          <ToastContainer />
           <Navbar />
-          {children}
-          <ScrollToTop />
-        </main>
-        <Footer />
+          <main className="relative mx-auto px-6 sm:px-12 lg:max-w-[70rem] xl:max-w-[76rem] 2xl:max-w-[92rem] text-paper">
+            {children}
+            <ScrollToTop />
+          </main>
+          <Footer />
+        </div>
       </body>
       <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM} />
     </html>
