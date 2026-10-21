@@ -9,10 +9,29 @@ import "./css/card.scss";
 import "./css/globals.scss";
 const inter = Inter({ subsets: ["latin"] });
 
+const siteUrl = "https://omshreechoudhary.tech";
+
 export const metadata = {
-  title: "Om Shree Choudhary — AI & ML Engineer",
+  metadataBase: new URL(siteUrl),
+  title: "Om Shree Choudhary | CSE (AI&ML), SIH 2025 Winner",
   description:
-    "Portfolio of Om Shree Choudhary. AI/ML undergraduate building intelligent systems, backend applications, and machine learning solutions.",
+    "Portfolio of Om Shree Choudhary, final-year CSE (AI&ML) student at RNSIT Bengaluru and Smart India Hackathon 2025 national winner. Machine learning systems, FastAPI backends, and cross-platform apps.",
+  openGraph: {
+    title: "Om Shree Choudhary | CSE (AI&ML), SIH 2025 Winner",
+    description:
+      "Final-year CSE (AI&ML) student at RNSIT Bengaluru, Smart India Hackathon 2025 national winner. ML systems, FastAPI backends, cross-platform apps.",
+    url: siteUrl,
+    siteName: "Om Shree Choudhary",
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "Om Shree Choudhary - Portfolio" }],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Om Shree Choudhary | CSE (AI&ML), SIH 2025 Winner",
+    description:
+      "Final-year CSE (AI&ML) student at RNSIT Bengaluru, Smart India Hackathon 2025 national winner. ML systems, FastAPI backends, cross-platform apps.",
+    images: ["/og.png"],
+  },
 };
 
 export default function RootLayout({ children }) {
