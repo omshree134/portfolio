@@ -1,32 +1,40 @@
 // @flow strict
-"use client";
 import { skillsData } from "@/utils/data/skills";
+import SectionHeading from "../../helper/section-heading";
+
+function Chip({ skill, hidden }) {
+  return (
+    <span
+      aria-hidden={hidden || undefined}
+      className="px-4 py-2 border border-line bg-panel font-[family-name:var(--font-mono)] text-xs tracking-[0.12em] text-paper whitespace-nowrap hover:border-cc hover:text-cc transition-colors cursor-default"
+    >
+      {skill}
+    </span>
+  );
+}
 
 function Skills() {
   return (
-    <div id="skills" className="relative z-50 my-8 lg:my-16 px-6 md:px-12 mx-auto max-w-[92rem]">
-      <div className="flex flex-col items-center justify-center mb-8">
-        <h2 className="text-3xl font-bold text-white tracking-tight mb-3">
-          Core Technologies
-        </h2>
-        <p className="text-sm text-muted text-center max-w-xl">
-          Languages, frameworks, and tools I use to build scalable ML systems and backend infrastructure.
-        </p>
-      </div>
+    <section id="skills" className="my-16 lg:my-24">
+      <SectionHeading
+        cue="03"
+        title="Signal Chain"
+        sub="Languages, frameworks, and tools I use to build ML systems and backend infrastructure."
+      />
 
-      <div className="flex flex-wrap justify-center gap-2 lg:gap-2.5 max-w-3xl mx-auto">
-        {skillsData.map((skill, id) => (
-          <div
-            key={id}
-            className="px-4 py-2 rounded-full bg-[#0f172a] border border-white/5 text-sm text-muted font-medium hover:text-white hover:border-accent/40 transition-all cursor-default animate-fade-up"
-            style={{ animationDelay: `${id * 0.03}s` }}
-          >
-            {skill}
-          </div>
-        ))}
+      {/* pure-CSS marquee; without animation the full row stays visible */}
+      <div className="marquee border-y border-line py-4 -mx-6 sm:-mx-12 px-6 sm:px-12">
+        <div className="marquee-track">
+          {skillsData.map((skill) => (
+            <Chip key={skill} skill={skill} />
+          ))}
+          {skillsData.map((skill) => (
+            <Chip key={`${skill}-dup`} skill={skill} hidden />
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   );
-};
+}
 
 export default Skills;

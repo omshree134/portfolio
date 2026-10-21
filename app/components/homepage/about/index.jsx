@@ -1,32 +1,33 @@
 // @flow strict
 import { personalData } from "@/utils/data/personal-data";
-import Image from "next/image";
+import SectionHeading from "../../helper/section-heading";
 
 function AboutSection() {
   return (
-    <div id="about" className="my-8 lg:my-16 relative px-6 md:px-12 mx-auto max-w-[92rem]">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-        <div className="order-2 lg:order-1">
-          <h2 className="text-3xl font-bold text-white tracking-tight mb-4">
-            About Me
-          </h2>
-          <p className="text-muted text-sm lg:text-base leading-relaxed">
-            {personalData.description}
-          </p>
-        </div>
-        <div className="flex justify-center lg:justify-end order-1 lg:order-2">
-          <div className="relative w-[280px] h-[280px] rounded-xl overflow-hidden border border-white/10">
-            <img
-              src={`${personalData.profile}?v=3`}
-              alt={personalData.name}
-              className="transition-all duration-700 hover:scale-105 cursor-pointer w-full h-full object-cover"
-              style={{ objectPosition: 'center 30%' }}
-            />
-          </div>
-        </div>
+    <section id="about" className="my-16 lg:my-24 relative">
+      <SectionHeading cue="01" title="About" />
+      <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-8 lg:gap-14 items-start">
+        <p className="text-xl lg:text-2xl text-paper leading-relaxed font-light">
+          <span className="text-cc font-[family-name:var(--font-mono)] text-base align-top mr-2">&gt;_</span>
+          {personalData.description}
+        </p>
+        <dl className="border border-line bg-panel divide-y divide-line font-[family-name:var(--font-mono)] text-sm">
+          {[
+            ["DEGREE", "B.E. CSE (AI&ML)"],
+            ["COLLEGE", "RNSIT, Bengaluru"],
+            ["BATCH", "2023 — 2027"],
+            ["FOCUS", "ML systems · backends · apps"],
+            ["STATUS", "Open to SWE/ML internships"],
+          ].map(([k, v]) => (
+            <div key={k} className="flex items-center justify-between gap-4 px-4 py-3">
+              <dt className="text-[11px] tracking-[0.2em] text-muted">{k}</dt>
+              <dd className="text-paper text-right">{v}</dd>
+            </div>
+          ))}
+        </dl>
       </div>
-    </div>
+    </section>
   );
-};
+}
 
 export default AboutSection;
