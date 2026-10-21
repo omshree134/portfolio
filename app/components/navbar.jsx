@@ -45,6 +45,14 @@ function Navbar() {
               <span className="absolute inset-x-0 -bottom-1 h-0.5 scale-x-0 bg-accent transition-transform duration-300 group-hover:scale-x-100"></span>
             </Link>
           </li>
+          {personalData.resume && (
+            <li>
+              <Link className="group relative block px-2 py-2 text-sm text-accent transition-colors duration-300 hover:text-white" href={personalData.resume} target="_blank">
+                RESUME
+                <span className="absolute inset-x-0 -bottom-1 h-0.5 scale-x-0 bg-accent transition-transform duration-300 group-hover:scale-x-100"></span>
+              </Link>
+            </li>
+          )}
         </ul>
       </div>
     </nav>
