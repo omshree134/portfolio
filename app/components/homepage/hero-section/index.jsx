@@ -5,18 +5,18 @@ import Link from "next/link";
 import { BsGithub, BsLinkedin } from "react-icons/bs";
 import { MdDownload } from "react-icons/md";
 import { RiProjectorFill } from "react-icons/ri";
-import { motion } from "framer-motion";
+
+const stats = [
+  "SIH 2025 National Winner",
+  "GPA 8.95",
+  "Bengaluru, India",
+];
 
 function HeroSection() {
   return (
     <section className="relative flex flex-col items-center justify-center min-h-[80vh] py-8 lg:py-16">
       <div className="grid grid-cols-1 items-center lg:grid-cols-2 lg:gap-12 gap-y-8 w-full">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="order-2 lg:order-1 flex flex-col items-start justify-center"
-        >
+        <div className="order-1 flex flex-col items-start justify-center animate-fade-up">
           <h1 className="text-4xl font-bold leading-tight text-white md:font-extrabold lg:text-[3.25rem] lg:leading-[1.15] mb-3">
             {personalData.name}
           </h1>
@@ -27,15 +27,28 @@ function HeroSection() {
             {personalData.description}
           </p>
 
+          <div className="flex flex-wrap items-center gap-2 mb-6">
+            {stats.map((stat) => (
+              <span
+                key={stat}
+                className="px-3 py-1 rounded-full bg-accent/10 border border-accent/25 text-accent text-xs font-medium"
+              >
+                {stat}
+              </span>
+            ))}
+          </div>
+
           <div className="flex flex-wrap items-center gap-3">
-            <Link 
-              href={personalData.resume} 
-              target="_blank"
-              className="px-5 py-2.5 rounded-lg bg-accent text-white text-sm font-medium hover:bg-accent-hover transition-all duration-200 flex items-center gap-2"
-            >
-              <span>Resume</span>
-              <MdDownload size={16} />
-            </Link>
+            {personalData.resume && (
+              <Link 
+                href={personalData.resume} 
+                target="_blank"
+                className="px-5 py-2.5 rounded-lg bg-accent text-white text-sm font-medium hover:bg-accent-hover transition-all duration-200 flex items-center gap-2"
+              >
+                <span>Resume</span>
+                <MdDownload size={16} />
+              </Link>
+            )}
             
             <Link 
               href="/#projects" 
@@ -61,14 +74,9 @@ function HeroSection() {
               <BsLinkedin size={18} />
             </Link>
           </div>
-        </motion.div>
+        </div>
         
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="order-1 lg:order-2 flex justify-center lg:justify-end"
-        >
+        <div className="order-2 flex justify-center lg:justify-end animate-fade-in-scale">
           <div className="bg-[#1e293b] border border-white/8 rounded-xl p-5 w-full max-w-[440px] shadow-lg">
             <h3 className="text-base font-semibold text-white mb-4 pb-3 border-b border-white/8">
               Current Focus
@@ -76,9 +84,9 @@ function HeroSection() {
             
             <div className="space-y-2.5 mb-5">
               {[
-                "FastAPI & Python Backend",
                 "Machine Learning & TensorFlow",
-                "Docker & Deployment",
+                "FastAPI & Python Backend",
+                "Flutter & Cross-platform Apps",
                 "System Design",
                 "Competitive Programming"
               ].map((item, i) => (
@@ -97,7 +105,7 @@ function HeroSection() {
               </span>
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
