@@ -4,6 +4,8 @@ import { CgGitFork } from "react-icons/cg";
 import { IoStar } from "react-icons/io5";
 import { personalData } from "@/utils/data/personal-data";
 
+const repoUrl = "https://github.com/omshree134/portfolio";
+
 function Footer() {
   return (
     <div className="relative border-t bg-background border-white/5 text-muted">
@@ -15,7 +17,7 @@ function Footer() {
           <div className="flex items-center gap-5 mt-4 md:mt-0">
             <Link
               target="_blank"
-              href={personalData.github}
+              href={repoUrl}
               className="flex items-center gap-2 uppercase hover:text-accent transition-colors"
             >
               <IoStar />
@@ -23,7 +25,7 @@ function Footer() {
             </Link>
             <Link
               target="_blank"
-              href={personalData.github}
+              href={`${repoUrl}/fork`}
               className="flex items-center gap-2 uppercase hover:text-accent transition-colors"
             >
               <CgGitFork />
