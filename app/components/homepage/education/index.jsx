@@ -1,7 +1,6 @@
 // @flow strict
 "use client";
 import { educations } from "@/utils/data/educations";
-import { motion } from "framer-motion";
 import { BsPersonWorkspace } from "react-icons/bs";
 
 function Education() {
@@ -15,13 +14,10 @@ function Education() {
 
       <div className="grid grid-cols-1 gap-6 lg:gap-8 max-w-3xl">
         {educations.map((education, index) => (
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: index * 0.1 }}
-            viewport={{ once: true }}
+          <div
             key={education.id}
-            className="bg-[#1e293b] border border-white/8 rounded-xl p-5 lg:p-6 flex flex-col md:flex-row gap-5 transition-all duration-300 hover:border-white/15 hover:-translate-y-1"
+            className="bg-[#1e293b] border border-white/8 rounded-xl p-5 lg:p-6 flex flex-col md:flex-row gap-5 transition-all duration-300 hover:border-white/15 hover:-translate-y-1 animate-fade-up"
+            style={{ animationDelay: `${index * 0.1}s` }}
           >
             <div className="flex-shrink-0 mt-1 hidden md:block text-accent">
               <BsPersonWorkspace size={36} />
@@ -47,7 +43,7 @@ function Education() {
                 </p>
               )}
             </div>
-          </motion.div>
+          </div>
         ))}
       </div>
     </div>
