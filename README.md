@@ -1,36 +1,87 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Om Shree Choudhary - Portfolio
 
-## Getting Started
+A modern, responsive developer portfolio showcasing my work as an AI & ML Engineer, backend developer, and researcher.
 
-First, run the development server:
+[![Next.js](https://img.shields.io/badge/Next.js-16.2.7-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-19.2.7-blue?style=for-the-badge&logo=react)](https://react.dev/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.x-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
+
+---
+
+## 🌟 About Me
+
+- **Name:** Om Shree Choudhary
+- **Field:** AI & ML Undergraduate at RNS Institute of Technology, Bengaluru
+- **Specialization:** Building intelligent systems, scalable backend architectures, and machine learning solutions
+- **GitHub:** [@omshree134](https://github.com/omshree134)
+- **LinkedIn:** [Om Shree](https://www.linkedin.com/in/om-shree)
+
+---
+
+## 🚀 Featured Projects
+
+1. **CURE: Crowd Unified Risk Evaluation**
+   - Outbreak risk prediction utilizing environmental indicators, crowdsourced symptoms, and ML forecasting models.
+   - *Tech:* Python, Machine Learning, XGBoost, LSTM
+
+2. **Plastic Waste Classification**
+   - Computer vision classification system trained on waste datasets using CNNs.
+   - *Tech:* Python, TensorFlow, CNN, Computer Vision
+
+3. **NLP Chatbot**
+   - Intent-aware conversational agent with sentiment analysis and persistent context.
+   - *Tech:* Python, FastAPI, BERT, MongoDB
+
+4. **VITA & AEGIS**
+   - Supply-chain disruption analysis simulation engine and emergency response routing.
+   - *Tech:* FastAPI, NetworkX, NumPy, React, Google Gemini
+
+---
+
+## 🛠️ Tech Stack & Skills
+
+- **Languages:** Python, JavaScript, TypeScript, C++, SQL
+- **Machine Learning & Data:** TensorFlow, PyTorch, Scikit-Learn, OpenCV, Pandas, NumPy
+- **Backend & Web:** FastAPI, Next.js, Node.js, React, Tailwind CSS
+- **Databases & DevOps:** MongoDB, PostgreSQL, MySQL, Docker, Git
+
+---
+
+## 💻 Getting Started Locally
+
+### Prerequisites
+
+- Node.js 18+ installed
+- npm / pnpm / yarn
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/omshree134/portfolio.git
+   cd portfolio
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Run development server:
+   ```bash
+   npm run dev
+   ```
+
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+### Building for Production
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📄 License
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MIT License. Designed and maintained by [Om Shree Choudhary](https://github.com/omshree134).

@@ -1,0 +1,41 @@
+@use "tailwindcss";
+
+@theme {
+  --color-background: #020617;
+  --color-secondary-background: #0f172a;
+  --color-cards: #1e293b;
+  --color-accent: #3b82f6;
+  --color-accent-hover: #60a5fa;
+  --color-muted: #94a3b8;
+}
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  background-color: var(--color-background);
+}
+
+body {
+  color: #FFFFFF;
+  background-color: var(--color-background);
+}
+
+#sticky-card-1 {
+  --index: 1;
+}
+
+#sticky-card-2 {
+  --index: 2;
+}
+
+#sticky-card-3 {
+  --index: 3;
+}
+
+#sticky-card-4 {
+  --index: 4;
+}
+
+.sticky-card {
+  // padding-top: calc(var(--index) * 2.5rem);
+  top: calc(var(--index) * 4rem);
+}
