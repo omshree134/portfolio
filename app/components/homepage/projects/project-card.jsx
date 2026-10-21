@@ -17,9 +17,16 @@ function ProjectCard({ project }) {
     >
       <div>
         <div className="flex justify-between items-start mb-4">
-          <h3 className="text-lg font-bold text-white leading-snug pr-4">
-            {project.name}
-          </h3>
+          <div className="flex flex-col gap-2 pr-4">
+            <h3 className="text-lg font-bold text-white leading-snug">
+              {project.name}
+            </h3>
+            {project.badge && (
+              <span className="w-fit px-2.5 py-0.5 rounded-full bg-accent/15 border border-accent/30 text-accent text-[11px] font-semibold uppercase tracking-wide">
+                {project.badge}
+              </span>
+            )}
+          </div>
           <div className="flex gap-2.5 text-muted flex-shrink-0">
             {project.code && (
               <Link href={project.code} target="_blank" className="hover:text-accent transition-colors">
