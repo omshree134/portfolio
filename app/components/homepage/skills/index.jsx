@@ -1,7 +1,6 @@
 // @flow strict
 "use client";
 import { skillsData } from "@/utils/data/skills";
-import { motion } from "framer-motion";
 
 function Skills() {
   return (
@@ -17,16 +16,13 @@ function Skills() {
 
       <div className="flex flex-wrap justify-center gap-2 lg:gap-2.5 max-w-3xl mx-auto">
         {skillsData.map((skill, id) => (
-          <motion.div
-            initial={{ opacity: 0, y: 8 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.25, delay: id * 0.03 }}
-            viewport={{ once: true }}
+          <div
             key={id}
-            className="px-4 py-2 rounded-full bg-[#0f172a] border border-white/5 text-sm text-muted font-medium hover:text-white hover:border-accent/40 transition-all cursor-default"
+            className="px-4 py-2 rounded-full bg-[#0f172a] border border-white/5 text-sm text-muted font-medium hover:text-white hover:border-accent/40 transition-all cursor-default animate-fade-up"
+            style={{ animationDelay: `${id * 0.03}s` }}
           >
             {skill}
-          </motion.div>
+          </div>
         ))}
       </div>
     </div>
