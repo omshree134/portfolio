@@ -1,23 +1,23 @@
 // @flow strict
 import { projectsData } from '@/utils/data/projects-data';
+import SectionHeading from "../../helper/section-heading";
 import ProjectCard from './project-card';
 
 const Projects = () => {
-
   return (
-    <div id='projects' className="relative z-50 my-8 lg:my-16 px-6 md:px-12 mx-auto max-w-[92rem]">
-      <div className="flex items-center justify-start mb-8">
-        <h2 className="text-3xl font-bold text-white tracking-tight">
-          Featured Projects
-        </h2>
-      </div>
+    <section id='projects' className="my-16 lg:my-24">
+      <SectionHeading
+        cue="04"
+        title="Featured Projects"
+        sub="Systems built to solve real problems — accessibility, safety, public health, and supply chains."
+      />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-6">
         {projectsData.slice(0, 6).map((project, index) => (
-          <ProjectCard key={index} project={project} />
+          <ProjectCard key={project.id} project={project} index={index} />
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 
